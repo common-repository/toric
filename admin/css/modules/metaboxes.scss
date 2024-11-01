@@ -1,0 +1,311 @@
+/*320px — 480px: Mobile devices.
+481px — 768px: iPads, Tablets.
+769px — 1024px: Small screens, laptops.
+1025px — 1200px: Desktops, large screens.
+1201px and more — Extra large screens, TV.*/
+//media sizes
+$media_xsmall_max_size:319px;
+$media_mobile_max_size:480px;
+$media_tablet_max_size:768px;//also ipad
+$media_laptop_max_size:1024px;//also small screen
+$media_desktop_max_size:1200px;
+$media_xlarge_min_size:1201px;
+
+
+/*Global*/
+$border_color: #c3c4c7;
+$border_size:1px;
+
+$horizontal_tab_active_background_color:#2271b1; //#7ad1f3;
+$horizontal_tab_font_color:#022C25;
+$horizontal_tab_active_font_color:#fff;
+$horizontal_tab_hover_font_color:#72aee6;
+//nav
+$metabox_nav_tab_background_color:#f0f0f1;//#7b7b7c
+$toric_metabox_tab_content_background_color:#fff;
+//horizontal tab border 
+$horizontal_tab_border_color: $border_color;
+$horizontal_tab_open_border_color: $horizontal_tab_border_color $horizontal_tab_active_background_color $horizontal_tab_border_color $horizontal_tab_border_color;
+$horizontal_tab_border_size: $border_size;
+$horizontal_tab_width: 162px;
+
+//padding
+$horizontal_tab_p_padding: 8px;
+//margin
+$toric_metabox_nav_tab_p_margin_size:0px;
+//height_size
+$toric_metabox_nav_tab_li_height_size: calc(#{$toric-metabox-nav-tab_p_margin_size} + #{$horizontal_tab_p_padding} * 2 + 20px);
+$toric_metabox_nav_tab_a_height_size: $toric_metabox_nav_tab_li_height_size;
+//colopased tab
+$tc-tab-collapsed_width:42px;
+//left highlight border 
+$left_highlight_border_tickness_size:4px;
+$left_highlight_border_top: calc(#{$left_highlight_border_tickness_size} * -1);
+$left_highlight_border_margin_left: calc(#{$left_highlight_border_tickness_size} * -1);
+
+//tab_pane
+$metabox_tab_pane_tr_border_color:transparent transparent $border_color transparent;
+$metabox_tab_pane_tr_border_size: $border_size;
+
+#codes_settings> .inside{
+	padding: 0 !important;
+	margin-top: 0;
+}
+
+
+
+.toric-metabox-inner-container{
+	display: flex;
+	align-items: stretch;
+	box-shadow: 0 5px 4px -2px rgba(0, 0, 0, 0.15);
+	
+
+
+.toric-metabox-nav-tabs {
+	/*float: left;*/
+	width: $horizontal_tab_width;
+	margin: 0;
+	/*list-style-type:none;*/
+	border-bottom: 1px solid transparent;
+	background-color: $metabox_nav_tab_background_color;
+
+	&.tc-collapsed{
+		max-width: $tc-tab-collapsed_width;
+		>li{
+			>a{
+				>p{
+					.tc_tab_title{
+						display: none;
+					}
+				}
+				
+			}
+			
+		}
+	}
+
+	
+
+
+
+
+	> li {
+		
+		max-width: $horizontal_tab_width;
+		max-height: $toric_metabox_nav_tab_li_height_size;/**/
+		display: flex;
+		align-items: center;
+		
+
+		/*float: left;*/
+		margin-bottom: -1px;/*removes gap between li*/
+		/*overflow: hidden;hide overflow due to -1 margin*/
+
+
+		/*border: $horizontal_tab_border_size solid transparent;
+		border-color: $horizontal_tab_border_color;*/
+		/*@element 'div' and  (max-width: $media_xsmall_max_size) {
+			background-color: aqua !important;
+		}*/
+
+		> a {
+			color: $horizontal_tab_font_color;
+			/*margin-right: 2px;
+			line-height: 1.5;
+			padding: 12px;*/
+			position: relative;
+			/*border-radius: 4px 4px 0 0;*/
+			/*float: left;*/
+			text-decoration: none;
+			max-height:$toric_metabox_nav_tab_a_height_size;
+			max-width: 100%;
+			width: 100%;
+			overflow: hidden;//hides overflow to hide left highlight border overflow
+
+			/*&:hover {
+				border-color: #95f19a #7ff088 #fc7171;
+			}*/
+			&:hover{//left border highlight
+				color: $horizontal_tab_hover_font_color;
+				&::before{
+					left: 0;
+					border: solid $left_highlight_border_tickness_size transparent;
+					border-left-color: transparent;
+					content: "";
+					height: 100%;
+					width: 0;
+					position: absolute;
+					pointer-events: none;
+					border-right-color:$horizontal_tab_hover_font_color;
+					top: $left_highlight_border_top;
+					margin-left: $left_highlight_border_margin_left;
+				}
+			}
+
+			>p{
+				font-size: 14px;
+				line-height: 1.3;
+				padding: $horizontal_tab_p_padding;
+				overflow-wrap: break-word;
+				word-wrap: break-word;
+				-ms-word-break: break-all;
+				word-break: break-word;
+				-webkit-hyphens: auto;
+				hyphens: auto;
+				margin: $toric-metabox-nav-tab_p_margin_size;
+
+
+				.tc_tab_title{
+					padding-left: 8px;
+				}
+
+
+			}
+		}
+
+		
+		
+
+		&.active > a {//active nav tab
+			color: $horizontal_tab_active_font_color;
+			border-color: $horizontal_tab_open_border_color;
+			background-color:$horizontal_tab_active_background_color;
+			&,
+			&:hover,
+			&:focus {
+				
+				cursor: default;
+				/*background-color: #99f575;
+				border-color: transparent;
+				border-color: #fc009b transparent #fc7171 #945605;*/
+			
+			
+				position: relative;
+
+				
+			
+			
+			}
+			&:hover{//active left border highlight
+				&::before{
+					left: 0;
+						
+						border-right-color:$toric_metabox_tab_content_background_color;
+						
+						
+					}
+			}
+			&:after{//active right arrow
+				right: 0;
+				border: solid 9px transparent;
+				border-right-color: transparent;
+				content: " ";
+				height: 0;
+				width: 0;
+				position: absolute;
+				pointer-events: none;
+				border-right-color: $toric_metabox_tab_content_background_color;
+				top: 50%;
+				margin-top: -9px;
+
+				
+			}
+
+			
+		}
+
+		
+
+
+
+
+		/*&:hover {
+			border-color: #95f19a #7ff088 #fc7171;
+		}*/
+	}
+}
+
+
+
+
+
+
+
+.toric-metabox-tab-content {
+	flex-grow: 1;/*fill the parent div*/
+	min-height: 334px;
+	font-size: 13px;
+	line-height: 1.5;
+
+	> .toric-metabox-tab-pane {
+		float: left;
+		width: 100%;
+		display: none;
+		/*background-color: #945605;*/
+		flex-grow: 1;
+	
+	
+		/*border: $horizontal_tab_border_size solid transparent;
+				border-color:$metabox_tab_pane_tr_border_color;*/
+	
+		&.active {
+			display: block;
+			/*padding: 10px;
+			background-color: #fff;*/
+			
+		}
+
+		> table{
+			width: 100%;
+			/*border: solid;*/
+			border-collapse: collapse;
+
+			
+			tr{
+		
+				border: $metabox_tab_pane_tr_border_size solid transparent;
+				
+				border-color:$metabox_tab_pane_tr_border_color;
+				/*border: solid;*/
+
+
+				td{
+					vertical-align: top;
+					
+					/*border: solid;*/
+					padding: 12px;
+					&:nth-child(1) {
+						/*width: 30%;*/
+						
+					}
+				
+					&:nth-child(2) {
+						/*width: 70%;*/
+					}
+				}
+			}
+		}
+
+	
+		
+	}
+}
+
+}
+
+
+
+
+
+
+
+.tc-hidden{
+	display: none ;
+}
+
+
+
+
+
+
+

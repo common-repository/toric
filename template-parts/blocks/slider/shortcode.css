@@ -1,0 +1,35 @@
+.toric.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.toric.tooltip:hover .toric.tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+.toric.tooltip .toric.tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.toric.tooltip .toric.tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}/*# sourceMappingURL=shortcode.css.map */

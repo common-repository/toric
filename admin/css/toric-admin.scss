@@ -1,0 +1,17 @@
+
+
+//@use 'modules/tabs';
+//@use 'modules/checkboxes';
+//@use 'modules/metaboxes';
+@use 'modules/tooltip.scss';
+@use 'modules/shortcode.scss';
+@use 'modules/spinner-preloader.scss';
+
+
+.toric.field.section {
+    margin: inherit;
+ &.display-none{
+    display: none;
+ }
+}
+
